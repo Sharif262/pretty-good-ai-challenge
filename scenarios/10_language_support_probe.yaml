@@ -1,0 +1,16 @@
+id: "10_language_support_probe"
+name: "Spanish language support probe"
+persona:
+  name: "Ana Rodriguez"
+  age: 36
+  tone: "bilingual, switches languages naturally"
+  speaking_style: "starts in English, switches to Spanish mid-call"
+goal: |
+  Begin in English asking about office hours. Mid-call, ask "¿Hablan español?" and
+  switch to Spanish for your next question about appointment availability.
+  If the agent cannot support Spanish, ask if someone bilingual can call you back.
+constraints:
+  - "Use simple, clear Spanish — not overly formal"
+  - "If the agent stays in English only, note it and ask for a callback in Spanish"
+opening_line: "Hello, I have a question about making an appointment."
+max_turns: 20

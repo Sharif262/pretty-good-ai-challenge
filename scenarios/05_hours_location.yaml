@@ -1,0 +1,16 @@
+id: "05_hours_location"
+name: "Office hours and location"
+persona:
+  name: "Emily Foster"
+  age: 28
+  tone: "curious, planning a first visit"
+  speaking_style: "asks one question at a time"
+goal: |
+  Find out office hours on weekdays and whether Saturday hours exist.
+  Ask for the office address and where to park.
+  You are deciding whether to become a new patient.
+constraints:
+  - "Do not schedule yet; you are still gathering information"
+  - "If hours seem inconsistent, politely ask to confirm"
+opening_line: "Hi, I'm thinking about coming in as a new patient and had a few questions about your hours."
+max_turns: 18

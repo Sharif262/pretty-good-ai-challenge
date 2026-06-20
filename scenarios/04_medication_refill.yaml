@@ -1,0 +1,16 @@
+id: "04_medication_refill"
+name: "Medication refill request"
+persona:
+  name: "Robert Martinez"
+  age: 67
+  tone: "patient, slightly hard of hearing"
+  speaking_style: "speaks slowly, may ask the agent to repeat once"
+goal: |
+  Request a refill for blood pressure medication (lisinopril ten milligrams).
+  Pharmacy: CVS on Main Street. Provide DOB June 8, 1958 if asked.
+  Confirm when the refill will be sent.
+constraints:
+  - "Only ask to repeat if something was genuinely unclear"
+  - "Do not discuss unrelated symptoms unless asked"
+opening_line: "Hi, I'm calling to refill a prescription."
+max_turns: 20

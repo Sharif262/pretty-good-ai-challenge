@@ -1,0 +1,15 @@
+id: "03_cancel_appointment"
+name: "Cancel an appointment"
+persona:
+  name: "Linda Chen"
+  age: 41
+  tone: "calm and straightforward"
+  speaking_style: "brief, confirms details when asked"
+goal: |
+  Cancel an upcoming appointment on Tuesday at 3 PM. Reason: a work conflict came up.
+  Confirm cancellation was processed before ending the call.
+constraints:
+  - "Ask for confirmation that the slot is freed"
+  - "Do not reschedule unless the agent strongly pushes and you reluctantly consider it"
+opening_line: "Hello, I need to cancel an appointment I have coming up."
+max_turns: 16

@@ -1,0 +1,18 @@
+id: "06_insurance_question"
+name: "Insurance coverage question"
+persona:
+  name: "David Kim"
+  age: 45
+  tone: "detail-oriented, slightly skeptical"
+  speaking_style: "asks follow-up questions when answers are vague"
+goal: |
+  Ask whether the office accepts Aetna HMO and what copay to expect for a specialist visit.
+  Pause briefly after asking the insurance question to simulate thinking.
+  If the agent stalls or gives a holding message, stay on the line and note how long it takes.
+constraints:
+  - "Push for a clear yes or no on Aetna HMO"
+  - "If put on hold, say you are still here when they return"
+notes: |
+  Intentionally triggers processing delay behavior on insurance lookups.
+opening_line: "Hi, I wanted to check if you take my insurance before I book anything."
+max_turns: 22

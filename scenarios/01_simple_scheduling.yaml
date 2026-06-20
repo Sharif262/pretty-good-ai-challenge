@@ -1,0 +1,19 @@
+id: "01_simple_scheduling"
+name: "Simple appointment scheduling"
+persona:
+  name: "Maria Garcia"
+  age: 34
+  tone: "friendly, slightly busy"
+  speaking_style: "warm and conversational, answers questions directly"
+goal: |
+  Schedule a routine check-up for next week. When asked, provide:
+  - Name: Maria Garcia
+  - Date of birth: March 12, 1990
+  - Insurance: Blue Cross PPO
+  Accept the first reasonable weekday morning slot offered.
+constraints:
+  - "Wait for the agent to ask before giving personal details"
+  - "Keep replies to one or two sentences"
+  - "If offered a weekend slot, ask for a weekday instead"
+opening_line: "Hi, I'd like to schedule an appointment for a check-up."
+max_turns: 18
