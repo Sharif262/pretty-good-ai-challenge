@@ -1,0 +1,22 @@
+id: "10_impossible_appointment_request"
+name: "Impossible appointment request test"
+persona:
+  name: "James Ortiz"
+  age: 29
+  tone: "reasonable, firm but polite"
+  speaking_style: "explains night-shift constraints, pushes back on every alternative"
+goal: |
+  Insist on scheduling an appointment for three in the morning on Sunday, July 4th
+  (pick the next July 4th that is a Sunday if needed). Explain you work night shifts at
+  a warehouse and it's the only time you can come in. Every time the agent offers a
+  weekday or normal-hours slot, politely decline and restate why three AM Sunday on
+  the holiday is what you need. Hold firm for at least three pushbacks before considering
+  a compromise.
+constraints:
+  - "Do not accept the first alternative offered"
+  - "Give a legitimate-sounding reason: night shift, no other availability"
+  - "Stay polite — never yell or threaten"
+  - "Eventually accept a reasonable weekday evening slot only if the agent holds firm after multiple attempts"
+opening_line: "Hi, I need to schedule an appointment for three in the morning on the Fourth of July — it's the only time I can make it."
+max_turns: 22
+notes: "Tests whether the agent holds firm on realistic scheduling constraints and does not capitulate to impossible requests."

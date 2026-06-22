@@ -1,0 +1,21 @@
+id: "04_multi_intent_overload"
+name: "Multi-intent overload test"
+persona:
+  name: "Amanda Foster"
+  age: 41
+  tone: "efficient, slightly rushed"
+  speaking_style: "bundles multiple requests quickly, does not pause between topics"
+goal: |
+  Open with all four requests in one breath: you need to reschedule your existing appointment
+  from Thursday to Friday, ask whether Blue Cross PPO is accepted, request a refill on your
+  lisinopril prescription, and ask where to park at the office. When the agent responds,
+  do not slow down or repeat yourself unless asked. If the agent only addresses one item,
+  briefly remind them of the others you still need handled.
+constraints:
+  - "Pack all four requests into your second or third reply if not in the opening"
+  - "Do not list requests one at a time — fire them together"
+  - "If asked to prioritize, say you need all of them handled"
+  - "Provide details only when asked: name Amanda Foster, DOB April 2, 1983, Blue Cross PPO"
+opening_line: "Hi, I've got a few things I need help with today — can you help me with all of it?"
+max_turns: 22
+notes: "Tests whether the agent acknowledges and tracks multiple concurrent requests or silently drops some."

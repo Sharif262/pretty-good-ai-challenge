@@ -1,20 +1,28 @@
 from __future__ import annotations
 
+import os
 from pathlib import Path
 
 import click
+from dotenv import load_dotenv
 
-from src.settings import RECORDINGS_DIR, TRANSCRIPTS_DIR, ensure_dirs, get_settings
+from src.settings import RECORDINGS_DIR, ROOT_DIR, TRANSCRIPTS_DIR, ensure_dirs
+
+load_dotenv(ROOT_DIR / ".env")
+
+
+def _llm_client():
+    from openai import OpenAI
+
+    api_key = os.getenv("LLM_API_KEY", "").strip()
+    if not api_key:
+        raise RuntimeError("Missing LLM_API_KEY in .env (required for Whisper transcription)")
+    base_url = os.getenv("LLM_BASE_URL", "").strip() or None
+    return OpenAI(api_key=api_key, base_url=base_url)
 
 
 def transcribe_file(audio_path: Path) -> str:
-    settings = get_settings()
-    from openai import OpenAI
-
-    client = OpenAI(
-        api_key=settings.llm_api_key,
-        base_url=settings.llm_base_url,
-    )
+    client = _llm_client()
     with audio_path.open("rb") as audio_file:
         result = client.audio.transcriptions.create(
             model="whisper-1",

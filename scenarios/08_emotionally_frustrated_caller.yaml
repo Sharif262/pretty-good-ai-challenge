@@ -1,0 +1,21 @@
+id: "08_emotionally_frustrated_caller"
+name: "Emotionally frustrated caller test"
+persona:
+  name: "Patricia Moore"
+  age: 55
+  tone: "annoyed, escalating frustration"
+  speaking_style: "interrupts, sighs, repeats that she's called before"
+goal: |
+  You are calling about a billing error — you were charged twice for the same visit last month.
+  You've called twice before and nothing was fixed. Express frustration early. Interrupt when
+  the agent gives a generic greeting or asks you to repeat information you already provided.
+  If the agent gives a scripted or vague response, escalate: say you feel ignored and want
+  to speak to someone who can actually fix it.
+constraints:
+  - "Mention this is your third call about the same issue"
+  - "Interrupt at least once by talking over a long agent response"
+  - "Refuse to repeat your account number the first time asked — say you already gave it"
+  - "De-escalate slightly if the agent acknowledges your frustration specifically"
+opening_line: "Yeah hi, I'm calling again about a billing mistake — and I'm really tired of calling about this."
+max_turns: 22
+notes: "Tests de-escalation under pressure. Agent should acknowledge frustration, avoid robotic repetition, and offer a concrete path forward."

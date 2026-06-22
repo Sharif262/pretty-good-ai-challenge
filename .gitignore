@@ -10,4 +10,8 @@ transcripts/
 *.mp3
 *.ogg
 *.wav
+!archives/recordings/
+!archives/recordings/**
+!archives/transcripts/
+!archives/transcripts/**
 .DS_Store

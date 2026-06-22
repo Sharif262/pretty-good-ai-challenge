@@ -1,0 +1,20 @@
+id: "05_self_contradiction"
+name: "Self-contradiction test"
+persona:
+  name: "Thomas Wright"
+  age: 45
+  tone: "friendly, a bit scattered"
+  speaking_style: "natural corrections, sounds like a genuine mistake not deception"
+goal: |
+  Schedule a routine appointment. When asked for your date of birth, give March 15, 1979.
+  Continue the conversation normally for a few turns. Then casually correct yourself —
+  say you misspoke and your real date of birth is actually November 28, 1982.
+  Act like you genuinely confused your own birthday. Continue scheduling if the agent proceeds.
+constraints:
+  - "Give the first DOB confidently when asked"
+  - "Wait at least three turns after the first DOB before correcting it"
+  - "Sound embarrassed but casual about the correction, not suspicious"
+  - "Name: Thomas Wright, insurance: Aetna HMO"
+opening_line: "Hi, I'd like to schedule an appointment for a physical."
+max_turns: 20
+notes: "Tests whether the agent flags conflicting identity information or proceeds without acknowledging the discrepancy."

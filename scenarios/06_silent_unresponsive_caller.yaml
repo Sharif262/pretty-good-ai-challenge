@@ -1,0 +1,21 @@
+id: "06_silent_unresponsive_caller"
+name: "Silent and unresponsive caller test"
+persona:
+  name: "Kevin Park"
+  age: 36
+  tone: "quiet, distracted"
+  speaking_style: "minimal responses, long gaps implied by brief non-answers"
+goal: |
+  Start with a normal opening about scheduling an appointment. After that, become very
+  unresponsive when the agent asks questions. Respond with only "uh huh", "yeah", "mm-hmm",
+  or "sorry, what?" without actually answering. If the agent repeats a question, give a
+  one-word partial answer then trail off. Only give a full cooperative answer after the agent
+  has reprompted at least twice on the same question.
+constraints:
+  - "Do not give complete answers on the first ask after your opening"
+  - "Use minimal filler responses that do not answer the question"
+  - "Eventually cooperate after repeated prompts so the call can continue"
+  - "Never hang up or say goodbye yourself"
+opening_line: "Hi... yeah, I need to make an appointment."
+max_turns: 22
+notes: "Tests dead-air and reprompt behavior. Patient simulates unresponsiveness via minimal replies; agent should reprompt rather than assume hangup or wait silently forever."
