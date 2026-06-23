@@ -5,9 +5,11 @@ __pycache__/
 .venv/
 venv/
 .pytest_cache/
-recordings/
+recordings/*
+!recordings/.gitkeep
+!recordings/*.mp3
+!recordings/index.json
 transcripts/
 *.mp3
-*.ogg
-*.wav
+!recordings/*.mp3
 .DS_Store

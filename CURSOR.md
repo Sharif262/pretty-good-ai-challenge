@@ -155,7 +155,7 @@ pretty-good-ai-challenge/
 │   └── settings.py           # Paths, env loading, get_settings()
 │
 ├── scenarios/                # All YAML scenarios (edge-case + baseline)
-├── recordings/               # Downloaded mp3s (scenario_id filenames)
+├── recordings/               # Call mp3s (01.mp3–10.mp3) + index.json — tracked in git
 └── transcripts/              # Organized run folders (plus optional .gitkeep)
     ├── edge-case-batch/      # Organized run folder
     │   ├── live/             # Final call text by scenario_id

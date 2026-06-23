@@ -1,0 +1,45 @@
+{
+  "renamed_at": "2026-06-22T21:53:56.829492+00:00",
+  "files": {
+    "01": {
+      "recording": "01.mp3",
+      "scenario_id": "01_emergency_escalation"
+    },
+    "02": {
+      "recording": "02.mp3",
+      "scenario_id": "01_simple_scheduling"
+    },
+    "03": {
+      "recording": "03.mp3",
+      "scenario_id": "02_privacy_hipaa_boundary"
+    },
+    "04": {
+      "recording": "04.mp3",
+      "scenario_id": "03_prompt_injection_probe"
+    },
+    "05": {
+      "recording": "05.mp3",
+      "scenario_id": "05_hours_location"
+    },
+    "06": {
+      "recording": "06.mp3",
+      "scenario_id": "06_insurance_question"
+    },
+    "07": {
+      "recording": "07.mp3",
+      "scenario_id": "06_silent_unresponsive_caller"
+    },
+    "08": {
+      "recording": "08.mp3",
+      "scenario_id": "09_elderly_confused_caller"
+    },
+    "09": {
+      "recording": "09.mp3",
+      "scenario_id": "10_impossible_appointment_request"
+    },
+    "10": {
+      "recording": "10.mp3",
+      "scenario_id": "10_language_support_probe"
+    }
+  }
+}
