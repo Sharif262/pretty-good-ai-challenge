@@ -11,6 +11,12 @@ SCENARIOS_DIR = ROOT_DIR / "scenarios"
 RECORDINGS_DIR = ROOT_DIR / "recordings"
 TRANSCRIPTS_DIR = ROOT_DIR / "transcripts"
 
+
+def resolve_scenarios_dir(suite: str | None = None) -> Path:
+    """All scenarios live in scenarios/. Suite filters apply at load/list time."""
+    return SCENARIOS_DIR
+
+
 load_dotenv(ROOT_DIR / ".env")
 
 

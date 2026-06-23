@@ -1,12 +1,15 @@
 from __future__ import annotations
 
+import json
 import os
 from pathlib import Path
 
 import click
 from dotenv import load_dotenv
 
+from src.persona import BASELINE_SCENARIO_IDS, infer_suite
 from src.settings import RECORDINGS_DIR, ROOT_DIR, TRANSCRIPTS_DIR, ensure_dirs
+from src.transcript_utils import publish_transcript
 
 load_dotenv(ROOT_DIR / ".env")
 
@@ -48,6 +51,59 @@ def transcribe_file(audio_path: Path) -> str:
     return "\n".join(lines) + "\n"
 
 
+def _find_meta_for_audio(audio_path: Path) -> dict | None:
+    stem = audio_path.stem
+    search_roots = [
+        TRANSCRIPTS_DIR,
+        TRANSCRIPTS_DIR / "_raw",
+        *(TRANSCRIPTS_DIR.glob("*/meta")),
+    ]
+
+    for root in search_roots:
+        if not root.exists():
+            continue
+        direct = root / f"{stem}.meta.json"
+        if direct.exists():
+            return json.loads(direct.read_text(encoding="utf-8"))
+
+    for root in search_roots:
+        if not root.exists():
+            continue
+        for meta_path in root.rglob("*.meta.json"):
+            meta = json.loads(meta_path.read_text(encoding="utf-8"))
+            if meta.get("call_sid") == stem or meta.get("scenario_id") == stem:
+                return meta
+
+    if stem in BASELINE_SCENARIO_IDS or (ROOT_DIR / "scenarios" / f"{stem}.yaml").exists():
+        return {
+            "scenario_id": stem,
+            "suite": infer_suite(stem),
+            "call_sid": stem,
+        }
+    return None
+
+
+def transcribe_audio(audio_path: Path) -> Path:
+    """Transcribe one mp3 and publish to organized transcript folders."""
+    ensure_dirs()
+    meta = _find_meta_for_audio(audio_path)
+    text = transcribe_file(audio_path)
+
+    if meta and meta.get("call_sid", "").startswith("CA"):
+        out_path = TRANSCRIPTS_DIR / f"{meta['call_sid']}-whisper.txt"
+    else:
+        out_path = TRANSCRIPTS_DIR / f"{audio_path.stem}-whisper.txt"
+    out_path.write_text(text, encoding="utf-8")
+
+    if meta and meta.get("scenario_id"):
+        publish_transcript(
+            meta.get("call_sid", audio_path.stem),
+            meta["scenario_id"],
+            meta=meta,
+        )
+    return out_path
+
+
 def transcribe_call(call_sid: str) -> Path:
     ensure_dirs()
     audio_path = RECORDINGS_DIR / f"{call_sid}.mp3"
@@ -55,11 +111,7 @@ def transcribe_call(call_sid: str) -> Path:
         raise FileNotFoundError(
             f"Recording not found: {audio_path}. Run call_runner download-recording first."
         )
-
-    text = transcribe_file(audio_path)
-    out_path = TRANSCRIPTS_DIR / f"{call_sid}-whisper.txt"
-    out_path.write_text(text, encoding="utf-8")
-    return out_path
+    return transcribe_audio(audio_path)
 
 
 @click.group()
@@ -77,16 +129,21 @@ def call_cmd(call_sid: str) -> None:
 
 @cli.command("all")
 def all_cmd() -> None:
-    """Transcribe all recordings in recordings/."""
+    """Transcribe all mp3 recordings in recordings/."""
     ensure_dirs()
     files = sorted(RECORDINGS_DIR.glob("*.mp3"))
     if not files:
         click.echo("No recordings found.")
         return
     for audio_path in files:
-        call_sid = audio_path.stem
-        path = transcribe_call(call_sid)
-        click.echo(f"Saved {path}")
+        path = transcribe_audio(audio_path)
+        click.echo(f"Saved {path} ({audio_path.name})")
+
+
+@cli.command("all-runs")
+def all_runs_cmd() -> None:
+    """Alias for transcribe all recordings in recordings/."""
+    all_cmd()
 
 
 @cli.command("file")

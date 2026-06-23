@@ -5,7 +5,28 @@ from pathlib import Path
 
 import yaml
 
-from src.settings import SCENARIOS_DIR
+from src.settings import SCENARIOS_DIR, resolve_scenarios_dir
+
+BASELINE_SCENARIO_IDS = {
+    "01_simple_scheduling",
+    "02_reschedule",
+    "03_cancel_appointment",
+    "04_medication_refill",
+    "05_hours_location",
+    "06_insurance_question",
+    "07_ambiguous_request",
+    "08_interruption_edge_case",
+    "09_ai_disclosure_probe",
+    "10_language_support_probe",
+}
+
+
+def infer_suite(scenario_id: str, suite: str | None = None) -> str:
+    if suite and suite not in ("", "default"):
+        return suite
+    if scenario_id in BASELINE_SCENARIO_IDS:
+        return "baseline"
+    return "default"
 
 
 @dataclass
@@ -23,12 +44,14 @@ class Scenario:
     notes: str = ""
 
 
-def load_scenario(scenario_id: str) -> Scenario:
-    path = SCENARIOS_DIR / f"{scenario_id}.yaml"
+def load_scenario(scenario_id: str, *, suite: str | None = None) -> Scenario:
+    suite = infer_suite(scenario_id, suite)
+    base = resolve_scenarios_dir(suite)
+    path = base / f"{scenario_id}.yaml"
     if not path.exists():
-        matches = sorted(SCENARIOS_DIR.glob(f"*{scenario_id}*.yaml"))
+        matches = sorted(base.glob(f"*{scenario_id}*.yaml"))
         if not matches:
-            available = [p.stem for p in sorted(SCENARIOS_DIR.glob("*.yaml"))]
+            available = [p.stem for p in sorted(base.glob("*.yaml"))]
             raise FileNotFoundError(
                 f"Scenario '{scenario_id}' not found. Available: {', '.join(available)}"
             )
@@ -53,8 +76,15 @@ def load_scenario(scenario_id: str) -> Scenario:
     )
 
 
-def list_scenarios() -> list[Scenario]:
-    return [load_scenario(path.stem) for path in sorted(SCENARIOS_DIR.glob("*.yaml"))]
+def list_scenarios(*, suite: str | None = None) -> list[Scenario]:
+    paths = sorted(SCENARIOS_DIR.glob("*.yaml"))
+    if suite in {"baseline", "test"}:
+        paths = [path for path in paths if path.stem in BASELINE_SCENARIO_IDS]
+    elif suite == "default":
+        paths = [path for path in paths if path.stem not in BASELINE_SCENARIO_IDS]
+
+    resolved = "baseline" if suite in {"baseline", "test"} else "default"
+    return [load_scenario(path.stem, suite=resolved) for path in paths]
 
 
 def build_system_prompt(scenario: Scenario) -> str:

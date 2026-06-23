@@ -1,0 +1,29 @@
+---
+description: Require CURSOR.md updates when the codebase changes
+alwaysApply: true
+---
+
+# Maintain CURSOR.md
+
+CURSOR.md at the repo root is the **single source of truth** for project architecture, setup, and workflows.
+
+## When to update
+
+Update CURSOR.md in the **same change set** whenever you modify:
+
+- `src/` modules, routes, WebSocket behavior, or CLI commands
+- Environment variables (`.env.example` or `settings.py`)
+- Directory layout or transcript organization
+- Scenario format, suites, or `persona.py` behavior
+- `requirements.txt` or setup/run workflows
+- Known pitfalls or operational notes
+
+## How to update
+
+- Edit the relevant section in CURSOR.md — do not create parallel docs
+- Keep AGENTS.md and CLAUDE.md as short pointers only (no duplicated content)
+- If you add a module or command, add it to the module reference and workflows sections
+
+## Completion check
+
+Before finishing a task that touched application code, ask: **Does CURSOR.md still accurately describe this repo?** If not, update it before marking the task done.

@@ -10,7 +10,7 @@ from fastapi.responses import Response
 from twilio.twiml.voice_response import Connect, ConversationRelay, VoiceResponse
 
 from src.llm import chat
-from src.persona import build_system_prompt, load_scenario, should_end_call
+from src.persona import build_system_prompt, infer_suite, load_scenario, should_end_call
 from src.settings import TRANSCRIPTS_DIR, ensure_dirs, get_settings
 
 logging.basicConfig(level=logging.INFO)
@@ -21,13 +21,16 @@ ensure_dirs()
 
 # call_sid -> session state
 sessions: dict[str, "CallSession"] = {}
-# scenario_id passed when placing the call
+# call_sid -> scenario_id
 pending_scenarios: dict[str, str] = {}
+# call_sid -> scenario suite (default | baseline)
+pending_suites: dict[str, str] = {}
 
 
 @dataclass
 class CallSession:
     scenario_id: str
+    suite: str = "default"
     messages: list[dict[str, str]] = field(default_factory=list)
     turn_count: int = 0
     transcript_lines: list[str] = field(default_factory=list)
@@ -49,6 +52,15 @@ def _get_scenario_id(request: Request, call_sid: str | None) -> str:
     return "01_simple_scheduling"
 
 
+def _get_suite(request: Request, call_sid: str | None) -> str:
+    suite = request.query_params.get("suite")
+    if suite:
+        return suite
+    if call_sid and call_sid in pending_suites:
+        return pending_suites[call_sid]
+    return "default"
+
+
 @app.get("/health")
 async def health() -> dict[str, str]:
     return {"status": "ok"}
@@ -59,9 +71,10 @@ async def twiml(request: Request) -> Response:
     settings = get_settings()
     call_sid = request.query_params.get("CallSid", "")
     scenario_id = _get_scenario_id(request, call_sid or None)
+    suite = _get_suite(request, call_sid or None)
 
     try:
-        scenario = load_scenario(scenario_id)
+        scenario = load_scenario(scenario_id, suite=suite)
         greeting = scenario.opening_line
     except FileNotFoundError:
         greeting = "Hello, I'm calling about an appointment."
@@ -76,6 +89,7 @@ async def twiml(request: Request) -> Response:
         report_input_during_agent_speech="speech",
     )
     relay.parameter(name="scenario_id", value=scenario_id)
+    relay.parameter(name="suite", value=suite)
     connect.append(relay)
     response.append(connect)
 
@@ -127,9 +141,14 @@ async def websocket_endpoint(websocket: WebSocket) -> None:
                 scenario_id = custom.get("scenario_id") or pending_scenarios.get(
                     call_sid, "01_simple_scheduling"
                 )
-                scenario = load_scenario(scenario_id)
+                suite = infer_suite(
+                    scenario_id,
+                    custom.get("suite") or pending_suites.get(call_sid),
+                )
+                scenario = load_scenario(scenario_id, suite=suite)
                 session = CallSession(
                     scenario_id=scenario_id,
+                    suite=suite,
                     messages=[{"role": "system", "content": build_system_prompt(scenario)}],
                 )
                 sessions[call_sid] = session
@@ -156,7 +175,7 @@ async def websocket_endpoint(websocket: WebSocket) -> None:
                     json.dumps({"type": "text", "token": reply, "last": True})
                 )
 
-                scenario = load_scenario(session.scenario_id)
+                scenario = load_scenario(session.scenario_id, suite=session.suite)
                 if should_end_call(scenario, session.turn_count, reply):
                     logger.info("Ending call %s after %s turns", call_sid, session.turn_count)
                     _hangup_call(call_sid)
@@ -173,6 +192,7 @@ async def websocket_endpoint(websocket: WebSocket) -> None:
         if call_sid and call_sid in sessions:
             _persist_transcript(call_sid, sessions.pop(call_sid))
             pending_scenarios.pop(call_sid, None)
+            pending_suites.pop(call_sid, None)
 
 
 def _persist_transcript(call_sid: str, session: CallSession) -> None:
@@ -188,8 +208,9 @@ def _persist_transcript(call_sid: str, session: CallSession) -> None:
     logger.info("Saved live transcript %s", path)
 
 
-def register_pending_call(call_sid: str, scenario_id: str) -> None:
+def register_pending_call(call_sid: str, scenario_id: str, *, suite: str = "default") -> None:
     pending_scenarios[call_sid] = scenario_id
+    pending_suites[call_sid] = suite
 
 
 def _hangup_call(call_sid: str) -> None:
