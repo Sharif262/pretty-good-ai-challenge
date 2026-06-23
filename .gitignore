@@ -9,7 +9,10 @@ recordings/*
 !recordings/.gitkeep
 !recordings/*.mp3
 !recordings/index.json
-transcripts/
+transcripts/*
+!transcripts/.gitkeep
+!transcripts/recordings/
+!transcripts/recordings/**
 *.mp3
 !recordings/*.mp3
 .DS_Store

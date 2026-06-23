@@ -156,7 +156,7 @@ pretty-good-ai-challenge/
 │
 ├── scenarios/                # All YAML scenarios (edge-case + baseline)
 ├── recordings/               # Call mp3s (01.mp3–10.mp3) + index.json — tracked in git
-└── transcripts/              # Organized run folders (plus optional .gitkeep)
+└── transcripts/              # Organized run folders; recordings/ batch tracked in git
     ├── edge-case-batch/      # Organized run folder
     │   ├── live/             # Final call text by scenario_id
     │   ├── meta/             # Call metadata JSON by scenario_id

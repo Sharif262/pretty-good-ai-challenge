@@ -1,0 +1,35 @@
+Recording: 06.mp3
+Scenario: 06_insurance_question
+Duration: 100.6s
+
+File: 06.mp3
+
+Full transcript:
+This call may be recorded for quality and training purposes. Para espanol, oprima el 2. Okay, I understand. My name is David Kim. I have a quick question about insurance coverage. Do you accept Aetna HMO? I cannot let that. I'll document your insurance question and let our clinic support team know. They will get back to you as soon as they can. I see. How long do you think that will take? And in the meantime, could you tell me what the co-pay is for a specialist visit? I'm not able to quote exact insurance benefits or co-pays here. I can send this to clinic support for review. They usually get back as soon as possible, often within one to two business days. I appreciate you sending that along, but I really need a ballpark figure for the co-pay right now. Can you give me any kind of estimate? I can't see your plan details from here, so I don't want to guess. The best I can do is send this to clinic support for review. They usually respond as soon as possible, often within one to two business days. If you want, I can also help with any other general questions while you wait. Thanks, but my main concern is the Aetna HMO acceptance and the co-pay for a specialist. Can you confirm if Aetna HMO is accepted? I'll check that with clinic support and document both questions. I'm connecting you to our clinic support team now. Please stay on the line. Connecting you to a representative. Please wait. Sure, I'm still here. Hello, you've reached the Pretty Good AI test line. Goodbye.
+
+Segments:
+[0.0s] This call may be recorded for quality and training purposes.
+[3.3s] Para espanol, oprima el 2.
+[6.9s] Okay, I understand. My name is David Kim. I have a quick question about insurance
+[11.0s] coverage. Do you accept Aetna HMO?
+[15.4s] I cannot let that. I'll document your insurance question and let our clinic
+[19.3s] support team know. They will get back to you as soon as they
+[22.2s] can.
+[25.0s] I see. How long do you think that will take? And in the meantime, could you tell
+[28.6s] me what the co-pay is for a specialist visit?
+[33.1s] I'm not able to quote exact insurance benefits or co-pays here.
+[37.4s] I can send this to clinic support for review. They usually get back
+[41.2s] as soon as possible, often within one to two business days.
+[47.0s] I appreciate you sending that along, but I really need a ballpark figure for the
+[50.2s] co-pay right now. Can you give me any kind of estimate?
+[55.8s] I can't see your plan details from here, so I don't want to guess.
+[58.8s] The best I can do is send this to clinic support for review.
+[62.2s] They usually respond as soon as possible, often within one to two business days.
+[67.4s] If you want, I can also help with any other general questions while you wait.
+[73.4s] Thanks, but my main concern is the Aetna HMO acceptance
+[76.5s] and the co-pay for a specialist. Can you confirm if Aetna HMO is accepted?
+[83.4s] I'll check that with clinic support and document both questions.
+[88.1s] I'm connecting you to our clinic support team now. Please stay on the line.
+[92.3s] Connecting you to a representative. Please wait.
+[96.4s] Sure, I'm still here. Hello, you've reached the Pretty Good AI test line.
+[99.8s] Goodbye.

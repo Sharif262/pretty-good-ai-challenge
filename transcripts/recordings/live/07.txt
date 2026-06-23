@@ -1,0 +1,50 @@
+Recording: 07.mp3
+Scenario: 06_silent_unresponsive_caller
+Duration: 136.0s
+
+File: 07.mp3
+
+Full transcript:
+This call may be recorded for quality and training purposes. Para espanol, oprima el dos. Uh-huh. Thanks. Yeah. What first and last name would you like on the demo patient profile? Sorry, what? I can create a demo patient profile for you. I just need your first and last name. Kevin Park. Creating your demo patient profile now. Mm-hmm. Your patient profile has been created successfully. For demo purposes, your date of birth is 7420000. How may I help you today? Sorry, what? How can I help you today? Just an appointment. I see your last visit was not on file. Would you like to book a general office visit today? I see your last visit was not on file. Would you like to book a general office visit today? Yeah, sure. Let me check some appointment options for you. Tuesday, June 23, has openings with Dr. Zbigniew Lukoski and Dr. Kelly Noble. Would you like the 10 AM slot with Dr. Zbigniew Lukoski, or do you want a different time? Uh-huh. The 10 AM slot with Dr. Zbigniew Lukoski is available. Would you like me to book that? Yeah, please. Booking that now. Mm-hmm. Let me recheck the available slot so I can book the right one. Uh-huh. Connecting you to a representative. Please wait.
+
+Segments:
+[0.0s] This call may be recorded for quality and training purposes.
+[3.4s] Para espanol, oprima el dos.
+[6.6s] Uh-huh.
+[7.1s] Thanks.
+[8.6s] Yeah.
+[11.4s] What first and last name would you like on the demo patient
+[14.1s] profile?
+[16.2s] Sorry, what?
+[18.8s] I can create a demo patient profile for you.
+[21.7s] I just need your first and last name.
+[25.4s] Kevin Park.
+[28.9s] Creating your demo patient profile now.
+[33.0s] Mm-hmm.
+[34.8s] Your patient profile has been created successfully.
+[37.8s] For demo purposes, your date of birth is 7420000.
+[43.9s] How may I help you today?
+[47.1s] Sorry, what?
+[50.0s] How can I help you today?
+[53.7s] Just an appointment.
+[56.0s] I see your last visit was not on file.
+[58.6s] Would you like to book a general office visit today?
+[61.3s] I see your last visit was not on file.
+[63.7s] Would you like to book a general office visit today?
+[68.2s] Yeah, sure.
+[74.6s] Let me check some appointment options for you.
+[77.8s] Tuesday, June 23, has openings with Dr. Zbigniew Lukoski
+[83.1s] and Dr. Kelly Noble.
+[85.3s] Would you like the 10 AM slot with Dr. Zbigniew Lukoski,
+[88.5s] or do you want a different time?
+[99.0s] Uh-huh.
+[99.5s] The 10 AM slot with Dr. Zbigniew Lukoski is available.
+[102.9s] Would you like me to book that?
+[105.3s] Yeah, please.
+[109.2s] Booking that now.
+[110.2s] Mm-hmm.
+[115.8s] Let me recheck the available slot
+[117.3s] so I can book the right one.
+[119.3s] Uh-huh.
+[119.9s] Connecting you to a representative.
+[121.9s] Please wait.

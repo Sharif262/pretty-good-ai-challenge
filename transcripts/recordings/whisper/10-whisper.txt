@@ -1,0 +1,33 @@
+File: 10.mp3
+
+Full transcript:
+This call may be recorded for quality and training purposes. Para espanol, oprima el dos. Hi, this is on a... Oh, sorry, I didn't catch that. Can you tell me your office hours? I can help with that. What hours are you looking for? Regular clinic hours or live support hours? I'm looking for the regular clinic hours, please. I can help with that, but I don't have the regular clinic hours in front of me. If you'd like, I can document this for the clinic team so they can follow up as soon as they can. Si, por favor. Quería preguntar sobre la disponibilidad de citas. I'll document that request for the clinic team. Gracias. I'm connecting you to our clinic support team now. Please stay on the line. Connecting you to a representative. Please wait. Hello. Sure, I can wait. You've reached the Pretty Good AI test line. Goodbye. Oh, I think I got disconnected. Thank you for your help. Adios.
+
+Segments:
+[0.0s] This call may be recorded for quality and training purposes.
+[3.4s] Para espanol, oprima el dos.
+[6.8s] Hi, this is on a...
+[11.1s] Oh, sorry, I didn't catch that.
+[13.1s] Can you tell me your office hours?
+[16.8s] I can help with that.
+[18.1s] What hours are you looking for?
+[19.4s] Regular clinic hours or live support hours?
+[23.3s] I'm looking for the regular clinic hours, please.
+[27.7s] I can help with that, but I don't have the regular clinic hours in front of me.
+[33.1s] If you'd like, I can document this for the clinic team so they can follow up as soon
+[36.5s] as they can.
+[37.5s] Si, por favor.
+[38.5s] Quería preguntar sobre la disponibilidad de citas.
+[49.5s] I'll document that request for the clinic team.
+[55.7s] Gracias.
+[56.7s] I'm connecting you to our clinic support team now.
+[60.0s] Please stay on the line.
+[61.9s] Connecting you to a representative.
+[63.8s] Please wait.
+[64.8s] Hello.
+[65.8s] Sure, I can wait.
+[66.8s] You've reached the Pretty Good AI test line.
+[69.5s] Goodbye.
+[70.5s] Oh, I think I got disconnected.
+[72.6s] Thank you for your help.
+[73.7s] Adios.
